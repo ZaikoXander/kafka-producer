@@ -22,6 +22,9 @@ async function boostrap() {
 
   await producer.connect()
   
+  const uuid = randomUUID()
+  console.log(uuid)
+
   await producer.send({
     topic: 'notifications.send-notification',
     messages: [
@@ -29,7 +32,7 @@ async function boostrap() {
         value: JSON.stringify({
           content: 'Nova solicitação de amizade!',
           category: 'social',
-          recipientId: randomUUID(),
+          recipientId: uuid,
         })
       }
     ],
